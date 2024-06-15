@@ -13,7 +13,7 @@ class FamilyMedicalHistory:
 
     @staticmethod
     def family_member_and_health_card_details(self):
-
+        print(ORANGE + ITALIC + "\nSuccessfully Inserted All Data" + RESET)  
         clear_screen()
         print(BLUE + ITALIC + "\nFamily Member's health insurance card expiry date\n" + RESET)
         
@@ -235,7 +235,7 @@ class FamilyMedicalHistory:
 
                     table.field_names = [
                         Fore.YELLOW + "Father Name" + Fore.RESET,
-                        Fore.YELLOW + "Parents Names" + Fore.RESET,
+                        Fore.YELLOW + "Mother Name" + Fore.RESET,
                         Fore.YELLOW + "Number of Children" + Fore.RESET,
                         Fore.YELLOW + "Children Details" + Fore.RESET,
                         Fore.YELLOW + "Vaccination Details" + Fore.RESET,
@@ -264,7 +264,7 @@ class FamilyMedicalHistory:
                     table.align[Fore.YELLOW + "Vaccination Name" + Fore.RESET] = "left"
 
                     table.max_width[Fore.YELLOW + "Father Name" + Fore.RESET] = 15
-                    table.max_width[Fore.YELLOW + "Mother Names" + Fore.RESET] = 20
+                    table.max_width[Fore.YELLOW + "Mother Name" + Fore.RESET] = 20
                     table.max_width[Fore.YELLOW + "Number of Children" + Fore.RESET] = 5
                     table.max_width[Fore.YELLOW + "Children Details" + Fore.RESET] = 25
                     table.max_width[Fore.YELLOW + "Vaccination Details" + Fore.RESET] = 25
@@ -291,6 +291,8 @@ class FamilyMedicalHistory:
                 
     @staticmethod
     def total_sum_hospital_registration_fees(self):
+
+        print(BLUE + ITALIC + "\nHospital registration fees total" + RESET)
 
         select_query = """
         SELECT

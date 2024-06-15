@@ -13,7 +13,11 @@ def confirm_data_entry_completed(finished,tablename):
         print('\n')
         print(ORANGE + ITALIC + f"Run the command to insert {tablename} (Copy from README.md)\n" + RESET)
         sys.exit()
+    elif finished == 'no':
+        print(GREEN + ITALIC + '\nKindly continue entering your data....\n' + RESET)    
     else:
-        print(GREEN + ITALIC + '\nKindly continue entering your data....\n' + RESET)
+        print(ORANGE + ITALIC + "\nInvalid comment Type yes or no" + RESET)
+        print(ORANGE + ITALIC + "Try again!" + RESET) 
+       
 
 

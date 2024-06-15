@@ -248,7 +248,7 @@ class DataInserter:
         done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET).lower()
 
         if done_entry == 'yes':
-            print(ORANGE + ITALIC + "\nSuccessfully Inserted All Data" + RESET)   
+             
             FamilyMedicalHistory.family_member_and_health_card_details(self)
             FamilyMedicalHistory.family_medical_visits(self)
             FamilyMedicalHistory.family_yearly_check_up_details(self)

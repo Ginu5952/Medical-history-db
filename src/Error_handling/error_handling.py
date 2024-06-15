@@ -31,7 +31,8 @@ class ErrorHandler:
                 print(RED + BOLD + f"\nContact number {details}" + RESET)   
                 print(ORANGE + ITALIC + "\nTry Again with another contact number" + RESET)      
             else:
-                print(RED + BOLD + f"{detail_message}" + RESET)    
+                print(RED + BOLD + f"\n{detail_message}" + RESET)   
+                print(ORANGE + ITALIC + "\nTry Again with non existing data" + RESET)    
         return False
 
     @staticmethod

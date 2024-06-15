@@ -178,7 +178,7 @@ python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC623 --
 
 python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC123 --doctor_id 2 --hospital_id 2 --department Cardiology --date_of_visit "2024-03-15 10:30" --symptoms "Chest pain" --diagnosis "Chest Infection" --medication "ECG scanning"
 
-python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC523 --doctor_id 1 --hospital_id 1 --department Physician --date_of_visit "2024-04-18 10:30" --symptoms "Fever" --diagnosis "Viral fever" --medication "Antibiotics"
+python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC523 --doctor_id 1 --hospital_id 3 --department Physician --date_of_visit "2024-04-18 10:30" --symptoms "Fever" --diagnosis "Viral fever" --medication "Antibiotics"
 ```
 
 

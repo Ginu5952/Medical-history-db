@@ -188,5 +188,25 @@ python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC523 --
 
 ``` You cannot enter the data of a person whose health insurance card number does not exist in the family member details table. First, you need to add the member to the family member details table with the corresponding health insurance card number.```
 
+#### Delete All Values Inserted Into Data Base Table
+```psql
+cd src
+cd Truncate
+psql -U postgres
+\i truncate.sql
+\q
+cd ..
+cd ..
+```
+
+#### Delete All Created Table, Schema and DataBase
+```psql
+cd src
+cd Delete
+\i delete.sql
+\q
+cd ..
+cd ..
+```
 
 

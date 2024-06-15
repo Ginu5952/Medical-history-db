@@ -13,8 +13,9 @@ class FamilyMedicalHistory:
 
     @staticmethod
     def family_member_and_health_card_details(self):
-        print(ORANGE + ITALIC + "\nSuccessfully Inserted All Data" + RESET)  
+      
         clear_screen()
+        print(ORANGE + ITALIC + "\nSuccessfully Inserted All Data" + RESET)  
         print(BLUE + ITALIC + "\nFamily Member's health insurance card expiry date\n" + RESET)
         
         select_query = """
@@ -69,7 +70,7 @@ class FamilyMedicalHistory:
     @staticmethod    
     def family_medical_visits(self):
 
-        print(BLUE + ITALIC + "\nFathers's Medical Visit Details\n" + RESET)  
+        print(ORANGE + ITALIC + "\nFathers's Medical Visit Details\n" + RESET)  
 
         select_query = """
            SELECT
@@ -145,7 +146,7 @@ class FamilyMedicalHistory:
     @staticmethod
     def family_yearly_check_up_details(self):
 
-        print(BLUE + ITALIC + "\nFamily Yearly Check-Up Details\n" + RESET)
+        print(ORANGE + ITALIC + "\nFamily Yearly Check-Up Details\n" + RESET)
 
         select_query = """
             SELECT
@@ -208,7 +209,7 @@ class FamilyMedicalHistory:
     @staticmethod
     def children_check_up_details(self):
 
-        print(BLUE + ITALIC + "\nChildren's Check-Up Details\n" + RESET)
+        print(ORANGE + ITALIC + "\nChildren's Check-Up Details\n" + RESET)
 
         select_query = """
             SELECT
@@ -292,7 +293,7 @@ class FamilyMedicalHistory:
     @staticmethod
     def total_sum_hospital_registration_fees(self):
 
-        print(BLUE + ITALIC + "\nHospital registration fees total" + RESET)
+        print(ORANGE + ITALIC + "\nHospital registration fees total" + RESET)
 
         select_query = """
         SELECT

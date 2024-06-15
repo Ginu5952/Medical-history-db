@@ -15,7 +15,7 @@ class HospitalDetails:
     def hospital_address(self):
 
        
-        print(BLUE + ITALIC + "\nHospital Address And Contact Details\n" + RESET)
+        print(ORANGE + ITALIC + "\nHospital Address And Contact Details\n" + RESET)
         
         select_query = """
             SELECT
@@ -87,7 +87,7 @@ class HospitalDetails:
     @staticmethod
     def doctor_consultation_day_time_details(self):
 
-        print(BLUE + ITALIC + "\n Doctor's consultation days and time\n" + RESET)
+        print(ORANGE + ITALIC + "\n Doctor's consultation days and time\n" + RESET)
 
         select_query = """
             SELECT

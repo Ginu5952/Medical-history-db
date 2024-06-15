@@ -1,8 +1,10 @@
 import os
 
 def clear_screen():
-    # Check if the operating system is Windows or Unix-like
-    if os.name == 'posix':  # posix is for Linux, macOS, and Unix
-        _ = os.system('clear')  # Clear command for Unix-like systems
-    elif os.name == 'nt':  # 'nt' is for Windows
-        _ = os.system('cls')
+    try:
+        if os.name == 'posix':
+            os.system('clear')
+        elif os.name == 'nt':
+            os.system('cls')
+    except Exception as e:
+        print(f"Error clearing the screen: {e}")

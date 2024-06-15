@@ -3,10 +3,12 @@ import argparse
 from src.Insert.insert_tables import *
 from src.helper.helper import confirm_data_entry_completed
 import sys
-from datetime import datetime,date
+from datetime import datetime
 from src.Error_handling.error_handling import ErrorHandler
 import json
 from src.Select.display_hospital_details import *
+from src.Select.display_db_results import *
+from src.Select.display_hospital_address import *
 
 operations = DataOperations()
 
@@ -15,7 +17,7 @@ class DataInserter:
     def __init__(self, pool):
         self.pool = pool
 
-
+    # Health Insurance card
     def insert_data_into_health_card(self):
 
         parser = argparse.ArgumentParser(description='Insert a record into health_insurance_card_details.')
@@ -44,7 +46,7 @@ class DataInserter:
         confirm_data_entry_completed(done_entry,tablename = "Family member details")     
 
 
-
+    # Family member details
     def insert_data_to_family_member_details(self):
         
         parser = argparse.ArgumentParser(description='Insert a record into family_member_details.')
@@ -61,18 +63,19 @@ class DataInserter:
         try:
             args = parser.parse_args()
         except argparse.ArgumentError as e: 
-            ErrorHandler.argparse_argument_error(e,parser) 
+            ErrorHandler.argparse_argument_error(e) 
         except SystemExit as e:
         
             if e.code != 0:
                 print(RED + BOLD + "Argument parsing failed due to an error." + RESET)
-                print(ORANGE + ITALIC + "\nPlease refer to the usage instructions below and ensure you enter the fields correctly.\n" + RESET)
-                parser.print_help()
+                print(ORANGE + ITALIC + "\nPlease fill the required fields.\n" + RESET)
+                
             raise      
         except argparse.ArgumentTypeError as e:
-            ErrorHandler.argparse_argument_type_error(e,parser)
+            ErrorHandler.argparse_argument_type_error(e)
         except Exception as e:
             print(f"Unexpected error: {e}")
+            parser.print_help()
             sys.exit(1)    
         
 
@@ -94,6 +97,7 @@ class DataInserter:
         done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET)
         confirm_data_entry_completed(done_entry,tablename = "Hospital details")     
 
+    # Hospital Details
     def insert_data_into_hospital_details(self):
 
         parser = argparse.ArgumentParser(description='Insert a record into hospital_details.')
@@ -112,8 +116,7 @@ class DataInserter:
         
             if e.code != 0:
                 print(RED + BOLD + "Argument parsing failed due to an error." + RESET)
-                print(ORANGE + ITALIC + "\nPlease refer to the usage instructions below and ensure you enter the fields correctly.\n" + RESET)
-                parser.print_help()
+                print(ORANGE + ITALIC + "\nPlease fill the required fields.\n" + RESET)
             raise        
         except argparse.ArgumentTypeError as e:
             ErrorHandler.argparse_argument_type_error(e,parser)
@@ -136,10 +139,11 @@ class DataInserter:
             sys.exit()     
 
         Display_hospital_id_and_hospital_name(self.pool) 
-        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET)
+        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET).lower()
         confirm_data_entry_completed(done_entry,tablename = "Doctor details")  
        
 
+    # Doctor Details
     def insert_data_into_doctor_details(self): 
 
         parser = argparse.ArgumentParser(description='Insert a record into consulted_doctor_details.')
@@ -183,11 +187,11 @@ class DataInserter:
         
             sys.exit()     
         Display_doctor_hospital_id(self.pool)
-        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET)
+        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET).lower()
         confirm_data_entry_completed(done_entry,tablename = "Yearly check up details")   
 
 
-
+    # Family medical history
     def insert_data_into_family_medical_details(self):
 
 
@@ -209,8 +213,7 @@ class DataInserter:
         
             if e.code != 0:
                 print(RED + BOLD + "Argument parsing failed due to an error." + RESET)
-                print(ORANGE + ITALIC + "\nPlease refer to the usage instructions below and ensure you enter the fields correctly.\n" + RESET)
-                parser.print_help()
+                print(ORANGE + ITALIC + "\nPlease fill the required fields.\n" + RESET)
             raise         
         except argparse.ArgumentTypeError as e:
             ErrorHandler.argparse_argument_type_error(e,parser)
@@ -242,16 +245,22 @@ class DataInserter:
         
             sys.exit() 
 
-        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET)
+        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET).lower()
 
         if done_entry == 'yes':
             print(ORANGE + ITALIC + "\nSuccessfully Inserted All Data" + RESET)   
+            FamilyMedicalHistory.family_member_and_health_card_details(self)
+            FamilyMedicalHistory.family_medical_visits(self)
+            FamilyMedicalHistory.family_yearly_check_up_details(self)
+            FamilyMedicalHistory.children_check_up_details(self)
+            FamilyMedicalHistory.total_sum_hospital_registration_fees(self)
+            HospitalDetails.hospital_address(self)
         else:
             print(GREEN + ITALIC + '\nKindly continue entering your data....\n' + RESET)     
     
  
 
-
+    # Yearly check up details
     def insert_data_into_yearly_check_details(self) :
         
         parser = argparse.ArgumentParser(description='Insert a record into family_yearly_checkup_details.')
@@ -269,8 +278,7 @@ class DataInserter:
         
             if e.code != 0:
                 print(RED + BOLD + "Argument parsing failed due to an error." + RESET)
-                print(ORANGE + ITALIC + "\nPlease refer to the usage instructions below and ensure you enter the fields correctly.\n" + RESET)
-                parser.print_help()
+                print(ORANGE + ITALIC + "\nPlease fill the required fields.\n" + RESET)
             raise       
         except argparse.ArgumentTypeError as e:
             ErrorHandler.argparse_argument_type_error(e,parser)
@@ -292,6 +300,7 @@ class DataInserter:
         confirm_data_entry_completed(done_entry,tablename = "Children checkup details")   
 
 
+    # Children check up details
     def insert_data_into_children_check_up_details(self):
 
         parser = argparse.ArgumentParser(description='Insert a record into children_checkup_details.')
@@ -311,7 +320,7 @@ class DataInserter:
         
             if e.code != 0:
                 print(RED + BOLD + "Argument parsing failed due to an error." + RESET)
-                print(ORANGE + ITALIC + "\nPlease refer to the usage instructions below and ensure you enter the fields correctly.\n" + RESET)
+                print(ORANGE + ITALIC + "\nPlease fill the required fields.\n" + RESET)
                 parser.print_help()
             raise          
         except argparse.ArgumentTypeError as e:
@@ -352,7 +361,7 @@ class DataInserter:
             sys.exit()  
 
         
-        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET)
+        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET).lower()
         confirm_data_entry_completed(done_entry,tablename = "Family medical details")   
 
        

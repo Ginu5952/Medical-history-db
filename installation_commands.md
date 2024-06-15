@@ -8,3 +8,6 @@ pip show psycopg
 
 pip install psycopg[binary,pool]
 
+pip install prettytable
+
+pip install colorama

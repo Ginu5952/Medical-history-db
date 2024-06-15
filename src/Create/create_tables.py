@@ -132,7 +132,7 @@ def create_tables(pool) -> bool:
             CREATE TABLE IF NOT EXISTS family_medical_details(
                 visit_id SERIAL PRIMARY KEY,
                 health_insurance_card_no VARCHAR(50) NOT NULL,
-                doctor_id INT,
+                doctor_id INT NOT NULL,
                 hospital_id INT NOT NULL,
                 department VARCHAR(50) NOT NULL,
                 date_of_visit TIMESTAMPTZ NOT NULL,

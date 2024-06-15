@@ -75,6 +75,9 @@ class DataOperations:
             return ErrorHandler.integrity_error(e)  
         except OperationalError as e: 
             return ErrorHandler.operational_error(e)
+        except DataError as e:
+            print(RED + ITALIC + "\nFailed to insert data!" + RESET)
+            return ErrorHandler.data_error(e)
         except Exception as e:
         
             return ErrorHandler.exception_error(e)
@@ -135,6 +138,9 @@ class DataOperations:
         except OperationalError as e:
     
             return ErrorHandler.operational_error(e)
+        except DataError as e:
+            print(RED + ITALIC + "\nFailed to insert data!" + RESET)
+            return ErrorHandler.data_error(e)
         except Exception as e:
         
             return ErrorHandler.exception_error(e)
@@ -238,6 +244,9 @@ class DataOperations:
         except OperationalError as e:
     
             return ErrorHandler.operational_error(e)
+        except DataError as e:
+            print(RED + ITALIC + "\nFailed to insert data!" + RESET)
+            return ErrorHandler.data_error(e)
         except Exception as e:
         
             return ErrorHandler.exception_error(e)

@@ -60,7 +60,12 @@ pip show psycopg
 ```psql
 pip install psycopg[binary,pool]
 ```
+#### Install prettytable and colorama
+```psql
+pip install prettytable
 
+pip install colorama
+```
 
 #### Insert health insurance card details
 
@@ -72,7 +77,11 @@ python3 -m src.main --health_insurance_card_no HIC123 --expiry_date_of_card 2026
 python3 -m src.main --health_insurance_card_no HIC623 --expiry_date_of_card 2030/12/17
 
 python3 -m src.main --health_insurance_card_no HIC523 --expiry_date_of_card 2035/07/22
+
+python3 -m src.main --health_insurance_card_no HIC723 --expiry_date_of_card 2038/08/13
 ```
+
+``` The expiry date of the health insurance card should not be from last year; it should be for a future year```
 
 #### insert family member details
 
@@ -84,8 +93,10 @@ python3 -m src.Insert.insert_family_member --health_insurance_card_no HIC123 --f
 python3 -m src.Insert.insert_family_member --health_insurance_card_no HIC623 --first_name Shiny --last_name George --age 55 --relation Mother --gender F --marital_status Married --profession "Home maker" --contact_no 13467890
 
 python3 -m src.Insert.insert_family_member --health_insurance_card_no HIC523 --first_name Anila --last_name Jacob --age 25 --relation Sister --gender F --marital_status Married --profession "Civil Engineer" --contact_no 7234567890
+
+python3 -m src.Insert.insert_family_member --health_insurance_card_no HIC723 --first_name John --last_name Doe --age 35 --relation Brother --gender M --marital_status Married --profession "Buisness" --contact_no 72784567890
 ```
-#### NB:---  Health insurance card no and first name cannot be empty.
+``` The health insurance card number and first name must be provided```
 
 #### Available options to select for marital status are:- Single, Married, Divorced, Widowed, Separated, Committed and Other
 
@@ -108,6 +119,7 @@ python3 -m src.Insert.insert_hospital_details --hospital_name "Take Care Hospita
 
 ```
 
+```The hospital name must be provided```
 
 #### Insert Doctor Details
 
@@ -126,6 +138,7 @@ python3 -m src.Insert.insert_doctor_details --hospital_id 3 --department Neurolo
 
 ```
 
+```The hospital id, department, doctor name  must be provided```
 
 #### Insert family yearly check up details
 
@@ -138,16 +151,20 @@ python3 -m src.Insert.insert_yearly_check --health_insurance_card_no HIC623 --ye
 
 python3 -m src.Insert.insert_yearly_check --health_insurance_card_no HIC523 --yearly_check_up_done "yes" --date_of_check_up "2024-05-23" 
 
+python3 -m src.Insert.insert_yearly_check --health_insurance_card_no HIC723 --yearly_check_up_done "no" 
+
 ```
+
+```The health insurance card number must be provided```
 
 #### Insert Children Check Up Details
 
 - copy below command and run in terminal with your data
 
 ```psql
-python3 -m src.Insert.insert_children_check     --health_insurance_card_no HIC123     --parents_name "John Doe"     --number_of_children 2     --children_name_and_age '[{"name": "Child1", "age": 5}, {"name": "Child2", "age": 8}]'     --vaccination_details '[{"name":"Child1","completed":"yes"},{"name":"Child2","completed":"no"}]'     --date_of_vaccination '[{"name":"Child1","date": "2024-03-15"}]'     --vaccination_name "Vaccine1"
+python3 -m src.Insert.insert_children_check     --health_insurance_card_no HIC723     --parents_name "Anila Jacob"     --number_of_children 2     --children_name_and_age '[{"name": "Sam", "age": 5}, {"name": "Bob", "age": 8}]'     --vaccination_details '[{"name":"Sam","completed":"yes"},{"name":"Bob","completed":"no"}]'     --date_of_vaccination '[{"name":"Sam","date": "2024-03-15"}]'     --vaccination_name "Varicella"
 ```
-#### NB:- --health_insurance_card_no is (Parent's card no)
+``` --health_insurance_card_no is (Parent's card number) must be provided ```
 
 
 #### Insert family medical details
@@ -163,7 +180,11 @@ python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC123 --
 
 python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC523 --doctor_id 1 --hospital_id 1 --department Physician --date_of_visit "2024-04-18 10:30" --symptoms "Fever" --diagnosis "Viral fever" --medication "Antibiotics"
 ```
-#### NB:- You cannot enter the data of a person whose health insurance card number does not exist in the family member details table. First, you need to add the member to the family member details table with the corresponding health insurance card number.
+
+
+```The health insurance card number, doctor id, hospital id, department and date of visit must be provided```
+
+``` You cannot enter the data of a person whose health insurance card number does not exist in the family member details table. First, you need to add the member to the family member details table with the corresponding health insurance card number.```
 
 
 

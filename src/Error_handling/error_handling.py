@@ -26,6 +26,12 @@ class ErrorHandler:
                 details = error_message.split("Failing row contains ")[1].strip("()")
                 print(RED + BOLD + f"\nFailed row details: {details}" + RESET)   
                 print(ORANGE + ITALIC + "\nTry Again with correct format" + RESET) 
+            elif "Key (contact_number)=" in detail_message:
+                details = error_message.split("Key (contact_number)=")[1].strip("()")
+                print(RED + BOLD + f"\nContact number {details}" + RESET)   
+                print(ORANGE + ITALIC + "\nTry Again with another contact number" + RESET)      
+            else:
+                print(RED + BOLD + f"{detail_message}" + RESET)    
         return False
 
     @staticmethod

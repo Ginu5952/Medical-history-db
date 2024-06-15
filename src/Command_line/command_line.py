@@ -225,7 +225,7 @@ class DataInserter:
         try:
             date_of_visit = datetime.strptime(args.date_of_visit, '%Y-%m-%d %H:%M')
         except ValueError:
-            print("Error: Incorrect date format. Should be 'YYYY-MM-DD HH:MM'")
+            print(RED + BOLD + "\nError: Incorrect date format. Should be 'YYYY-MM-DD HH:MM'" + RESET)
             print(LIGHT_BLUE + ITALIC + "\n Try again with correct format." + RESET)
             sys.exit()
         
@@ -255,6 +255,7 @@ class DataInserter:
             FamilyMedicalHistory.children_check_up_details(self)
             FamilyMedicalHistory.total_sum_hospital_registration_fees(self)
             HospitalDetails.hospital_address(self)
+            HospitalDetails.doctor_consultation_day_time_details(self)
         else:
             print(GREEN + ITALIC + '\nKindly continue entering your data....\n' + RESET)     
     

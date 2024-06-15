@@ -29,7 +29,7 @@ class ErrorHandler:
             elif "Key (contact_number)=" in detail_message:
                 details = error_message.split("Key (contact_number)=")[1].strip("()")
                 print(RED + BOLD + f"\nContact number {details}" + RESET)   
-                print(ORANGE + ITALIC + "\nTry Again with another contact number" + RESET)      
+                print(ORANGE + ITALIC + "\nTry Again with another contact number" + RESET)         
             else:
                 print(RED + BOLD + f"\n{detail_message}" + RESET)   
                 print(ORANGE + ITALIC + "\nTry Again with non existing data" + RESET)    
@@ -47,9 +47,9 @@ class ErrorHandler:
         error_message = str(e)
         
         if "invalid input syntax for type boolean" in error_message:
-            print(RED + BOLD + "\nInvalid value for boolean field. Should be 'yes' or 'no'." + RESET)
+            print(RED + BOLD + f"\nInvalid value for boolean field. Should be 'yes' or 'no'." + RESET)
         elif "invalid input syntax for type date" in error_message:
-            print(RED + BOLD + "\nInvalid date format. Should be YYYY-MM-DD format." + RESET)  
+            print(RED + BOLD + f"\nInvalid date format. Should be YYYY-MM-DD format." + RESET)  
         elif "invalid input value for enum" in error_message:
             print(RED + BOLD + "\nInvalid marital status choose 'Single', 'Married', 'Divorced', 'Widowed', 'Separated', 'Committed', 'Other'." + RESET)  
         else:

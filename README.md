@@ -165,6 +165,7 @@ python3 -m src.Insert.insert_yearly_check --health_insurance_card_no HIC723 --ye
 python3 -m src.Insert.insert_children_check     --health_insurance_card_no HIC723     --parents_name "Anila Jacob"     --number_of_children 2     --children_name_and_age '[{"name": "Sam", "age": 5}, {"name": "Bob", "age": 8}]'     --vaccination_details '[{"name":"Sam","completed":"yes"},{"name":"Bob","completed":"no"}]'     --date_of_vaccination '[{"name":"Sam","date": "2024-03-15"}]'     --vaccination_name "Varicella"
 ```
 ``` --health_insurance_card_no is (Parent's card number) must be provided ```
+```Date of vaccination cannot be future date```
 
 
 #### Insert family medical details
@@ -178,11 +179,12 @@ python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC623 --
 
 python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC123 --doctor_id 2 --hospital_id 2 --department Cardiology --date_of_visit "2024-03-15 10:30" --symptoms "Chest pain" --diagnosis "Chest Infection" --medication "ECG scanning"
 
-python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC523 --doctor_id 1 --hospital_id 3 --department Physician --date_of_visit "2024-04-18 10:30" --symptoms "Fever" --diagnosis "Viral fever" --medication "Antibiotics"
+python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC523 --doctor_id 4 --hospital_id 3 --department Neurology --date_of_visit "2024-04-18 10:30" --symptoms "Headache" --diagnosis "Migraine" --medication "Sumatriptin"
 ```
 
 
 ```The health insurance card number, doctor id, hospital id, department and date of visit must be provided```
+```date_of_visit cannot be future date```
 
 ``` You cannot enter the data of a person whose health insurance card number does not exist in the family member details table. First, you need to add the member to the family member details table with the corresponding health insurance card number.```
 

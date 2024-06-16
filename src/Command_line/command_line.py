@@ -163,8 +163,8 @@ class DataInserter:
         
             if e.code != 0:
                 print(RED + BOLD + "Argument parsing failed due to an error." + RESET)
-                print(ORANGE + ITALIC + "\nPlease refer to the usage instructions below and ensure you enter the fields correctly.\n" + RESET)
-                parser.print_help()
+                print(ORANGE + ITALIC + "\nPlease fill the required fields.\n" + RESET)
+        
             raise        
         except argparse.ArgumentTypeError as e:
             ErrorHandler.argparse_argument_type_error(e,parser)

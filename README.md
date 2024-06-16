@@ -120,6 +120,7 @@ python3 -m src.Insert.insert_hospital_details --hospital_name "Take Care Hospita
 ```
 
 ```The hospital name must be provided```
+```Multiple hospital can have same name.But hospial name and address should be unique```
 
 #### Insert Doctor Details
 
@@ -187,6 +188,29 @@ python3 -m src.Insert.insert_family_medical --health_insurance_card_no HIC523 --
 ```date_of_visit cannot be future date```
 
 ``` You cannot enter the data of a person whose health insurance card number does not exist in the family member details table. First, you need to add the member to the family member details table with the corresponding health insurance card number.```
+
+#### Update availability_days and consultation_hours of doctor_details table
+```psql
+cd src
+cd Update
+psql -U postgres
+\i update.sql
+\q
+cd ..
+cd ..
+```
+
+#### Reset doctor_id and hospital_id to 1 in the doctor_details and hospital_details tables.
+
+```psql
+cd src
+cd Reset
+psql -U postgres
+\i reset_table_id.sql
+\q
+cd ..
+cd ..
+```
 
 #### Delete All Values Inserted Into Data Base Table
 ```psql

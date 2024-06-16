@@ -20,7 +20,7 @@ class ErrorHandler:
            
             if "Key (health_insurance_card_no)=" in detail_message:   
                 details = error_message.split("Key (health_insurance_card_no)=")[1].split(")")[0]
-                print(RED + BOLD + f"\nFailed key details: {details}" + RESET)
+                print(RED + BOLD + f"\nFailed key details: {details} already exists" + RESET)
                 print(ORANGE + ITALIC + "\n Try Again with non existing health insurance card!" + RESET)
             elif "Failing row contains" in detail_message:
                 details = error_message.split("Failing row contains ")[1].strip("()")

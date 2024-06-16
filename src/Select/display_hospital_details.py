@@ -6,7 +6,7 @@ from utilities.font_styles import *
 def Display_hospital_id_and_hospital_name(pool): 
 
         select_query = """
-            SELECT hospital_id, hospital_name FROM hospital_details
+            SELECT hospital_id, hospital_name, address  FROM hospital_details
         """
 
         try:
@@ -18,7 +18,7 @@ def Display_hospital_id_and_hospital_name(pool):
 
                     print(YELLOW + ITALIC + "\n Please find ID's of Hospital from here\n" + RESET)
                     for hospital in hospitals:
-                        print(ORANGE + ITALIC + f"ID: {hospital[0]} : {hospital[1]}" + RESET)
+                        print(ORANGE + ITALIC + f"ID: {hospital[0]} : {hospital[1]} {hospital[2]}" + RESET)
                     
                     return True
         except IntegrityError as e:

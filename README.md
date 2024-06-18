@@ -141,6 +141,8 @@ python3 -m src.Insert.insert_doctor_details --hospital_id 3 --department Neurolo
 
 ```The hospital id, department, doctor name  must be provided```
 
+``` You cannot add doctor details whose hospital id is not present in the hospital details```
+
 #### Insert family yearly check up details
 
 - copy below commands and run one by one in terminal with your data

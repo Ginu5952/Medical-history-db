@@ -67,7 +67,7 @@ def create_tables(pool) -> bool:
                 contact_number VARCHAR(15) UNIQUE,
                 website VARCHAR(100) UNIQUE,
                 registration_fees MONEY,
-                UNIQUE(hospital_id,hospital_name,location)
+                UNIQUE(hospital_name,location, address)
             );
         """,
         "doctor_details": """

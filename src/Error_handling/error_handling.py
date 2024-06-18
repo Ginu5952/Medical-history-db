@@ -2,7 +2,15 @@
 from utilities.colors import *
 from utilities.font_styles import *
 import sys
+from enum import Enum
 
+
+class ErrorType(Enum):
+
+    HEALTH_INSURANCE_CARD_EXISTS = "Key (health_insurance_card_no)="
+    CONTACT_NUMBER_EXISTS = "Key (contact_number)="
+    FAILING_ROW = "Failing row contains"
+    GENERAL_DETAIL = "DETAIL:"
 
 class ErrorHandler:
 
@@ -15,24 +23,33 @@ class ErrorHandler:
     def integrity_error(e):
     
         error_message = str(e)
-        if "DETAIL:" in error_message:
-            detail_message = error_message.split("DETAIL: ")[1].strip()
-           
-            if "Key (health_insurance_card_no)=" in detail_message:   
-                details = error_message.split("Key (health_insurance_card_no)=")[1].split(")")[0]
+
+        if ErrorType.GENERAL_DETAIL.value in error_message:
+
+            detail_message = error_message.split(ErrorType.GENERAL_DETAIL.value)[1].strip()
+
+            if ErrorType.HEALTH_INSURANCE_CARD_EXISTS.value in detail_message:
+
+                details = detail_message.split(ErrorType.HEALTH_INSURANCE_CARD_EXISTS.value)[1].split(")")[0].strip()
                 print(RED + BOLD + f"\nFailed key details: {details} already exists" + RESET)
-                print(ORANGE + ITALIC + "\n Try Again with non existing health insurance card!" + RESET)
-            elif "Failing row contains" in detail_message:
-                details = error_message.split("Failing row contains ")[1].strip("()")
-                print(RED + BOLD + f"\nFailed row details: {details}" + RESET)   
-                print(ORANGE + ITALIC + "\nTry Again with correct format" + RESET) 
-            elif "Key (contact_number)=" in detail_message:
-                details = error_message.split("Key (contact_number)=")[1].strip("()")
-                print(RED + BOLD + f"\nContact number {details}" + RESET)   
-                print(ORANGE + ITALIC + "\nTry Again with another contact number" + RESET)         
+                print(ORANGE + ITALIC + "\nTry Again with a non-existing health insurance card!" + RESET)
+
+            elif ErrorType.FAILING_ROW.value in detail_message:
+
+                details = detail_message.split(ErrorType.FAILING_ROW.value)[1].strip("()")
+                print(RED + BOLD + f"\nFailed row details: {details} already exists" + RESET)
+                print(ORANGE + ITALIC + "\nTry Again with the correct format" + RESET)
+
+            elif ErrorType.CONTACT_NUMBER_EXISTS.value in detail_message:
+
+                details = detail_message.split(ErrorType.CONTACT_NUMBER_EXISTS.value)[1].split(")")[0].strip()
+                print(RED + BOLD + f"\nContact number {details} already exists" + RESET)
+                print(ORANGE + ITALIC + "\nTry Again with another contact number" + RESET)
+
             else:
-                print(RED + BOLD + f"\n{detail_message}" + RESET)   
-                print(ORANGE + ITALIC + "\nTry Again with non existing data" + RESET)    
+                print(RED + BOLD + f"\n{detail_message}" + RESET)
+                print(ORANGE + ITALIC + "\nTry Again with non-existing data" + RESET) 
+
         return False
 
     @staticmethod

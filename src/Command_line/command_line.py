@@ -94,7 +94,7 @@ class DataInserter:
         ):
             sys.exit()  
        
-        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET)
+        done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET).lower()
         confirm_data_entry_completed(done_entry,tablename = "Hospital details")     
 
     # Hospital Details
@@ -141,6 +141,7 @@ class DataInserter:
         Display_hospital_id_and_hospital_name(self.pool) 
         done_entry = input(PURPLE + BOLD + "\nCompleted your data entry? Type yes or no: " + RESET).lower()
         confirm_data_entry_completed(done_entry,tablename = "Doctor details")  
+
        
 
     # Doctor Details
@@ -330,23 +331,7 @@ class DataInserter:
             print(f"Unexpected error: {e}")
             sys.exit(1)      
 
-        #date_of_vaccination = args.date_of_vaccination if args.date_of_vaccination else None
-
-       # if args.date_of_vaccination:
-          #  try:
-              #  for vaccination_date in date_of_vaccination:
-                 #   date_vaccination_str = vaccination_date.get("date", "")
-                  #  if date_vaccination_str:
-                  #      date_vaccination_obj = datetime.strptime(date_vaccination_str, "%Y-%m-%d").date()
-                   #     if date_vaccination_obj > date.today():
-                  #          print("\033[91m\033[3m\nDate of vaccination cannot be in the future.\033[0m")
-                   #         return False
-                  #  else:
-                  #      print("\033[91m\033[3m\nInvalid date format for date_of_vaccination.\033[0m")
-                  #      return False
-           # except json.JSONDecodeError:
-              #  print("\nInvalid JSON format for date_of_vaccination.")
-              #  return False
+       
 
         if not operations.insert_children_checkup_details(
             self.pool,

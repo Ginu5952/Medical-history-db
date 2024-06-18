@@ -119,7 +119,7 @@ python3 -m src.Insert.insert_hospital_details --hospital_name "Take Care Hospita
 
 ```
 
-```The hospital name must be provided```
+```The hospital name must be provided.```
 ```Multiple hospital can have same name.But hospial name and address should be unique```
 
 #### Insert Doctor Details
